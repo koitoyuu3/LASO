@@ -1,0 +1,48 @@
+# =============================================================================
+# Example environment for the LASO backend.
+#
+# The committed application.yml reads every secret-bearing value from an
+# environment variable (Spring `${VAR:default}` syntax). For local development
+# or paper reproduction, export the variables below in your shell before
+# starting the backend, OR copy this file to application-local.yml and let
+# Spring profile `local` pick it up.
+#
+# Required for end-to-end runs:
+#   MYSQL_PASSWORD, JWT_SECRET, OLLAMA_SSH_HOST, OLLAMA_SSH_USER
+# Optional (defaults work for single-machine demos):
+#   MYSQL_HOST, MYSQL_PORT, MYSQL_DB, MYSQL_USER, FLASK_SERVICE_URL,
+#   AGENT_DATA_ROOT
+# =============================================================================
+
+# ---- MySQL ----
+# export MYSQL_HOST=db.example.com
+# export MYSQL_PORT=3306
+# export MYSQL_DB=industrial_internet
+# export MYSQL_USER=laso
+# export MYSQL_PASSWORD=changeme
+
+# ---- JWT ----
+# Must be >=256 bits (>= 32 ASCII chars). Generate with:
+#   openssl rand -base64 48
+# export JWT_SECRET=replace-with-a-long-random-string
+
+# ---- Flask agent service ----
+# export FLASK_SERVICE_URL=http://127.0.0.1:5000
+
+# ---- ChainMaker agent data path on the remote SSH host ----
+# export AGENT_DATA_ROOT=/data/laso
+
+# ---- Remote Ollama GPU pool (SSH) ----
+# export OLLAMA_SSH_HOST=gpu01.example.com
+# export OLLAMA_SSH_USER=ubuntu
+
+# =============================================================================
+# Note on sdk_config.yml (in the same directory):
+# That file is loaded by the ChainMaker Java SDK directly and does NOT support
+# ${VAR} interpolation. Edit it in place to fill in:
+#   - node addresses (4 entries under chain_client.nodes)
+#   - archive.dest (user:password:host:port)
+#   - archive.secret_key
+#   - pkcs11.password (if HSM is enabled)
+# See README.md for full setup steps.
+# =============================================================================

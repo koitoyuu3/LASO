@@ -1,0 +1,111 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:industrial_internet}?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+server:
+  port: 8080
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+
+logging:
+  level:
+    com.example.identify: debug
+    com.baomidou.mybatisplus: debug
+
+flask:
+  service:
+    url: ${FLASK_SERVICE_URL:http://127.0.0.1:5000}
+
+chainmaker:
+  oracle-aggregator:
+    contract-name: OracleAggregator
+  agent:
+    data-root: ${AGENT_DATA_ROOT:/data}
+    max-steps: 6
+    read-limit: 25
+  ollama:
+    transport: ssh
+    ssh:
+      host: ${OLLAMA_SSH_HOST:localhost}
+      user: ${OLLAMA_SSH_USER:ubuntu}
+      connect-timeout-seconds: 10
+    timeout-seconds: 120
+    max-result-length: 1800
+    default-node-count: 50
+    default-model: qwen2.5:7b
+    default-node-base-port: 11431
+    max-concurrent-nodes: 50
+    node1:
+      name: agent-1
+      url: http://127.0.0.1:11431
+      model: qwen2.5:7b
+    node2:
+      name: agent-2
+      url: http://127.0.0.1:11432
+      model: qwen2.5:7b
+    node3:
+      name: agent-3
+      url: http://127.0.0.1:11433
+      model: qwen2.5:7b
+    node4:
+      name: agent-4
+      url: http://127.0.0.1:11434
+      model: qwen2.5:7b
+    node5:
+      name: agent-5
+      url: http://127.0.0.1:11435
+      model: qwen2.5:7b
+    node6:
+      name: agent-6
+      url: http://127.0.0.1:11436
+      model: qwen2.5:7b
+    node7:
+      name: agent-7
+      url: http://127.0.0.1:11437
+      model: qwen2.5:7b
+    node8:
+      name: agent-8
+      url: http://127.0.0.1:11438
+      model: qwen2.5:7b
+    node9:
+      name: agent-9
+      url: http://127.0.0.1:11439
+      model: qwen2.5:7b
+    node10:
+      name: agent-10
+      url: http://127.0.0.1:11440
+      model: qwen2.5:7b
+
+jwt:
+  secret: ${JWT_SECRET:}
+  expiration: 3600000
+
+fisco:
+  oracle-aggregator:
+    auto-deploy: false
+    contract-address: ""

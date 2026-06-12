@@ -1,0 +1,92 @@
+# ===== OS / Editor =====
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ===== Java / Maven =====
+target/
+*.class
+*.jar
+*.war
+hs_err_pid*.log
+
+# ===== Node =====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===== ZK / Circom artefacts =====
+# Large compiled artefacts — regenerate locally
+*.r1cs
+*.zkey
+*.ptau
+*.wasm
+*.wtns
+*.sym
+**/circuits/build/
+
+# ===== Secrets / local config =====
+# Always commit the .example template, never the real one
+application-local.yml
+application-prod.yml
+sdk_config-local.yml
+*.local.yml
+*.local.yaml
+.env.local
+.env.*.local
+*.key
+*.pem
+*.p12
+*.jks
+
+# ChainMaker crypto material (keep .example layout, ignore real certs)
+**/crypto-config/**/*.key
+**/crypto-config/**/*.crt
+
+# ===== Logs / results =====
+*.log
+logs/
+result/raw/
+result/cache/
+
+# ===== Misc =====
+tmp/
+.tmp/
+*.bak
+*backup*
+
+# Datasets are hosted externally (see README §4) — too large for GitHub.
+# Keep the regen_*.py generation scripts tracked; ignore only the data itself.
+truth_discovery/data/**/*.json
+
+# Generated experiment outputs
+truth_discovery/examples/outputs/

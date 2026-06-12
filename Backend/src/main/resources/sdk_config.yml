@@ -1,0 +1,59 @@
+# =============================================================================
+# ChainMaker SDK configuration template.
+# Replace all placeholders before running the backend:
+#   ***.***.***.***   -> IP / hostname of each ChainMaker node
+#   ***               -> archive MySQL username
+#   ********          -> archive MySQL password / PKCS11 password / archive secret
+# This file is loaded by the ChainMaker Java SDK directly and does not support
+# Spring ${VAR:default} interpolation, so values must be filled in literally.
+# See README.md (section "Backend configuration") for environment setup.
+# =============================================================================
+chain_client:
+  chain_id: chain01
+  org_id: TestCMorg1
+  user_key_file_path: src/main/resources/crypto-config/TestCMorg1/user/cmtestuser1/cmtestuser1.tls.key
+  user_crt_file_path: src/main/resources/crypto-config/TestCMorg1/user/cmtestuser1/cmtestuser1.tls.crt
+  user_sign_key_file_path: src/main/resources/crypto-config/TestCMorg1/user/cmtestuser1/cmtestuser1.sign.key
+  user_sign_crt_file_path: src/main/resources/crypto-config/TestCMorg1/user/cmtestuser1/cmtestuser1.sign.crt
+  retry_limit: 10
+  retry_interval: 500
+  nodes:
+  - node_addr: ***.***.***.***:12301
+    conn_cnt: 10
+    enable_tls: true
+    trust_root_paths:
+    - src/main/resources/crypto-config/TestCMorg1/ca
+    tls_host_name: chainmaker.org
+  - node_addr: ***.***.***.***:12302
+    conn_cnt: 10
+    enable_tls: true
+    trust_root_paths:
+    - src/main/resources/crypto-config/TestCMorg1/ca
+    tls_host_name: chainmaker.org
+  - node_addr: ***.***.***.***:12303
+    conn_cnt: 10
+    enable_tls: true
+    trust_root_paths:
+    - src/main/resources/crypto-config/TestCMorg1/ca
+    tls_host_name: chainmaker.org
+  - node_addr: ***.***.***.***:12304
+    conn_cnt: 10
+    enable_tls: true
+    trust_root_paths:
+    - src/main/resources/crypto-config/TestCMorg1/ca
+    tls_host_name: chainmaker.org
+  archive:
+    type: mysql
+    dest: ***:********:***.***.***.***:3306
+    secret_key: ********
+  rpc_client:
+    max_receive_message_size: 100
+    max_send_message_size: 100
+  pkcs11:
+    enabled: false
+    type: ""
+    library: /usr/local/lib64/pkcs11/libupkcs11.so
+    label: HSM
+    password: "********"
+    session_cache_size: 10
+    hash: SHA256

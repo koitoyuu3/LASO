@@ -1,0 +1,23 @@
+# Pinned to versions tested at submission time.
+# Loosen ranges if you re-test against newer releases.
+
+# --- core numerical / data ---
+numpy>=1.24,<3.0
+pandas>=2.0,<3.0
+scipy>=1.10,<2.0
+scikit-learn>=1.3,<2.0
+matplotlib>=3.7,<4.0
+
+# --- NLP / embeddings ---
+sentence-transformers>=2.5,<4.0
+huggingface_hub>=0.20,<1.0
+
+# --- serialization / messaging ---
+msgpack>=1.0,<2.0
+pyzmq>=25.0,<27.0
+
+# --- web service (flaskProject) ---
+flask>=3.0,<4.0
+
+# --- system / utilities ---
+psutil>=5.9,<7.0
